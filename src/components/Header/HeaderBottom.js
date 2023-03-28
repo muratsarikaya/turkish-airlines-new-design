@@ -1,9 +1,11 @@
+import  {Link} from "react-router-dom"
 import Logo from "./Logo";
 
 import styled from "styled-components";
 import MainNavigation from "./MainNavigation";
 
 const HeaderBottomDiv = styled.div`
+  position: relative;
   background-color: #232b38;
   height: 60px;
   text-align: left;
@@ -17,7 +19,9 @@ const HeaderBottom = (props) => {
   return (
     <>
       <HeaderBottomDiv>
-        <Logo />
+        <Link to={"/"}>
+          <Logo />
+        </Link>
         <MainNavigation />
       </HeaderBottomDiv>
     </>

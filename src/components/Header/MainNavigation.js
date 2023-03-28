@@ -1,27 +1,23 @@
 import React from "react";
 import useHeaderStyles from "./HeaderStyles";
+import MenuItem from "./MenuItem";
+import LoginDropdown from "../Login/LoginDropdown/LoginDropdown";
+
+import MenulistData from "./MenuListData";
+
+
 const MainNavigation = (props) => {
   const classes = useHeaderStyles();
   return (
-    <nav>
-      <a className={classes.navLink} href=''>
-        Planla & Uç
-      </a>
-      <a className={classes.navLink} href=''>
-        Seyahat Deneyimi
-      </a>
-      <a className={classes.navLink} href=''>
-        Kefşet
-      </a>
-      <a className={classes.navLink} href=''>
-        Yardım
-      </a>
+    <nav style={{ display: "flex", alignItems: "center" }}>
+      {/* <MenuItem MainMenu={OnlyMenu} /> */}
+      {MenulistData.map((menu) => (
+        <MenuItem MainMenu={menu} />
+      ))}
       <a className={classes.navLink} href=''>
         Üye Ol
       </a>
-      <a className={classes.navLink} href=''>
-        Giriş Yap
-      </a>
+      <LoginDropdown value={"Giriş Yap"}/>
     </nav>
   );
 };

@@ -7,52 +7,73 @@ import SearchButton from "./SearchButton";
 import PassengerInput from "./Passenger/PassengerInput";
 
 import "react-calendar/dist/Calendar.css";
-import "./customCalenderStyle.css"
+import "./customCalenderStyle.css";
+import Datepicker from "./Datepicker";
+import {
+  FaPlaneDeparture,
+  FaPlaneArrival
+} from "react-icons/fa";
 
 const FlightContent = () => {
   const classesForm = useTabFromElStyles();
   const [dateValue, setDateValue] = useState({
     day: "",
     month: "",
-    dayString: ""
+    dayString: "",
   });
 
   const [dateToValue, setDateToValue] = useState({
     day: "",
     month: "",
-    dayString: ""
+    dayString: "",
   });
   const [inputValue, setInputValue] = useState({
-    from:"",
+    from: "",
     to: "",
     fromDate: "",
     toDate: "",
-    passenger:""
+    passenger: "",
   });
   const [showCalenderFrom, setShowCalendarFrom] = useState(false);
   const [showCalenderTo, setShowCalendarTo] = useState(false);
 
-  const onChangeFrom =(value)=>{
-    const dayNumber = value.toLocaleString('default', { day: 'numeric' });
-    const month = value.toLocaleString('default', { month: 'long' });
-    const monthNumeric = value.toLocaleString('default', { month: 'numeric' });
-    const weekday = value.toLocaleString('default', { weekday: "long" });
-    const year = value.toLocaleString('default', { year: "numeric", });
-    setShowCalendarFrom(false)
-    setInputValue({...inputValue, fromDate: `${dayNumber}/${monthNumeric}/${year}`})
-    setDateValue({...dateValue, day: dayNumber, month: month, dayString: weekday  })
+  const onChangeFrom = (value) => {
+    const dayNumber = value.toLocaleString("default", { day: "numeric" });
+    const month = value.toLocaleString("default", { month: "long" });
+    const monthNumeric = value.toLocaleString("default", { month: "numeric" });
+    const weekday = value.toLocaleString("default", { weekday: "long" });
+    const year = value.toLocaleString("default", { year: "numeric" });
+    setShowCalendarFrom(false);
+    setInputValue({
+      ...inputValue,
+      fromDate: `${dayNumber}/${monthNumeric}/${year}`,
+    });
+    setDateValue({
+      ...dateValue,
+      day: dayNumber,
+      month: month,
+      dayString: weekday,
+    });
     //setValue({...value, from: `${dayNumber} ${month} ${weekday}` })
-  }
-  const onChangeTo =(value)=>{
-    const dayNumber = value.toLocaleString('default', { day: 'numeric' });
-    const month = value.toLocaleString('default', { month: 'long' });
-    const monthNumeric = value.toLocaleString('default', { month: 'numeric' });
-    const weekday = value.toLocaleString('default', { weekday: "long" });
-    const year = value.toLocaleString('default', { year: "numeric", });
-    setShowCalendarTo(false)
-    setInputValue({...inputValue, toDate: `${dayNumber}/${monthNumeric}/${year}`})
-    setDateToValue({...dateToValue, day: dayNumber, month: month, dayString: weekday  })
-  }
+  };
+  const onChangeTo = (value) => {
+    const dayNumber = value.toLocaleString("default", { day: "numeric" });
+    const month = value.toLocaleString("default", { month: "long" });
+    const monthNumeric = value.toLocaleString("default", { month: "numeric" });
+    const weekday = value.toLocaleString("default", { weekday: "long" });
+    const year = value.toLocaleString("default", { year: "numeric" });
+    setShowCalendarTo(false);
+    setInputValue({
+      ...inputValue,
+      toDate: `${dayNumber}/${monthNumeric}/${year}`,
+    });
+    setDateToValue({
+      ...dateToValue,
+      day: dayNumber,
+      month: month,
+      dayString: weekday,
+    });
+  };
 
   return (
     <>
@@ -82,9 +103,9 @@ const FlightContent = () => {
         </label>
       </div>
       <div style={{ display: "flex" }}>
-        <InputPort placeholderTitle='Nereden' isChecked='checked' />
-        <InputPort placeholderTitle='Nereye' />
-        <InputPort
+        <InputPort icon={<FaPlaneDeparture/>} placeholderTitle='Nereden' isChecked='checked' />
+        <InputPort icon={<FaPlaneArrival/>} placeholderTitle='Nereye' />
+        <Datepicker
           placeholderTitle='Gidiş Tarihi'
           setCalendarStatus={setShowCalendarFrom}
           value={inputValue.fromDate}
@@ -99,7 +120,6 @@ const FlightContent = () => {
             </div>
           </div>
           <Calendar
-
             showDoubleView={true}
             selectRange={false}
             className={showCalenderFrom !== false ? "" : "hide"}
@@ -108,8 +128,8 @@ const FlightContent = () => {
             minDate={new Date()}
             //onClick={(value) => alert('New date is: ', value)}
           />
-        </InputPort>
-        <InputPort
+        </Datepicker>
+        <Datepicker
           placeholderTitle='Dönüş Tarihi'
           setCalendarStatus={setShowCalendarTo}
           value={inputValue.toDate}
@@ -120,18 +140,20 @@ const FlightContent = () => {
               <span> {dateToValue.month}</span>
             </div>
             <div>
-              <span className={classesForm.dateDay}>{dateToValue.dayString}</span>
+              <span className={classesForm.dateDay}>
+                {dateToValue.dayString}
+              </span>
             </div>
           </div>
           <Calendar
             showDoubleView={true}
-            selectRange={false} 
+            selectRange={false}
             className={showCalenderTo !== false ? "" : "hide"}
             onChange={onChangeTo}
             minDate={new Date()}
-           // value={value.to}
+            // value={value.to}
           />
-        </InputPort>
+        </Datepicker>
         <PassengerInput placeholderTitle='Yolcular' />
         <SearchButton />
       </div>

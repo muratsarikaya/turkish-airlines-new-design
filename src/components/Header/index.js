@@ -2,12 +2,17 @@ import HeaderTop from "./HeaderTop";
 import HeaderBottom from "./HeaderBottom";
 import HeaderBanner from "./HeaderBanner";
 
-const Header = (props) => {
+const Header = ({subPage}) => {
   return (
     <header>
       <HeaderTop />
       <HeaderBottom />
-      <HeaderBanner />
+      {
+        subPage !== true && (
+          <HeaderBanner />
+        )
+      }
+      
     </header>
   );
 };

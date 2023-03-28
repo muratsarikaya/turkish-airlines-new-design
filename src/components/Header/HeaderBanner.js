@@ -1,9 +1,7 @@
-import Banner from "../../assets/img/headerBanner.avif";
-
 import styled from "styled-components";
 
 const HeaderBannerDiv = styled.div`
-  background: url(${Banner});
+  background: url(https://cdn.turkishairlines.com/m/6761929144cccc1e/original/anasayfa-1400.webp);
   height: 420px;
   background-repeat: no-repeat;
   display: flex;

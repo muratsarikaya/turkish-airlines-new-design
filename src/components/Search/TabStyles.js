@@ -95,8 +95,52 @@ const useTabStyles = createUseStyles({
     border: "none",
     width: "100%",
     padding: "0",
-    opacity:0
   },
+  datepickerInput: {
+    opacity: 0
+  },
+  searchListWrapper: {
+    position: "absolute",
+    width: "100%",
+    backgroundColor: "#fff",
+    boxShadow: "0 1px 8px 4px rgb(0 0 0 / 12%)",
+    borderRadius: "8px",
+    padding: "20px",
+    minHeight: "150px",
+    maxHeight: "200px",
+    overflow: "auto",
+    top: "calc(100% + 10px)",
+    "&::-webkit-scrollbar":{
+      width: "6px",
+      borderRadius:"5px"
+    },
+    "&::-webkit-scrollbar-track":{
+      background: "#f1f1f1"
+    },
+    "&::-webkit-scrollbar-thumb":{
+      background: "#888",
+      borderRadius: "5px"
+    },
+    "&::-webkit-scrollbar-thumb:hover":{
+      background: "#555"
+    }
+  },
+  searchListItem: {
+    padding: "5px 10px",
+    cursor: "pointer",
+    borderRadius: "4px",
+    color: "#647281",
+    "&:hover":{
+      backgroundColor: "#232B38",
+      color: "#fff"
+    }
+  },
+  airportName:{
+    position: "absolute",
+    bottom:"4px",
+    fontSize: "11px",
+    color: "#647281"
+  }
 });
 
 const useTabFromElStyles = createUseStyles({
@@ -139,7 +183,8 @@ const useTabFromElStyles = createUseStyles({
     top: "9px"
   },
   dateDay: {
-    fontSize: "12px"
+    fontSize: "12px",
+    color: "#647280"
   }
 });
 export { useTabFromElStyles };

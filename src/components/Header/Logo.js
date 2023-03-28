@@ -1,4 +1,4 @@
-import LogoSource from "../../assets/img/logo/Logo-Yatay.png";
+import LogoSource from "../../assets/img/logo/THY-LOGO.avif";
 
 const Logo = () => {
   return (
